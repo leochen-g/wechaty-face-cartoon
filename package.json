@@ -1,11 +1,49 @@
 {
   "name": "wechaty-face-carton",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "wechaty人像卡通画插件",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:test": "node test/index.js",
+    "test": "nodemon test/index.js",
+    "release": "verpub publish",
+    "release:dry": "verpub --dry-run"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "微信机器人",
+    "人像卡通化",
+    "人脸卡通化",
+    "卡通画图片",
+    "照片卡通化",
+    "wechaty-plugin",
+    "wechaty插件"
+  ],
+  "author": {
+    "name": "Leo_chen",
+    "url": "http://www.xkboke.com",
+    "email": "leo.gengchen@foxmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leochen-g/wechaty-face-carton"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
+  },
+  "readme": "README.md",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "tencentcloud-sdk-nodejs": "^4.0.30",
+    "wechaty": "^0.63.7",
+    "wechaty-puppet-padlocal": "^0.2.35",
+    "wechaty-puppet-wechat": "^0.28.4"
+  },
+  "peerDependencies": {
+    "wechaty": "^0.63.7"
+  }
 }

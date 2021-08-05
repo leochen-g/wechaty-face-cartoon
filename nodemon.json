@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ignore": [".git", "*.test.js", "fixtures/*", "node_modules/*", "wechat-carton.memory-card.json"],
+  "execMap": {
+    "py": "python",
+    "rb": "ruby",
+    "js": "node --harmony"
+  }
+}
