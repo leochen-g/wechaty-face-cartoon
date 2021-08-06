@@ -150,8 +150,9 @@ async function onScan(qrcode, status) {
   console.log(qrImgUrl)
 }
 
-module.exports = function WechatyFaceCartonPlugin({ secretId, secretKey, allowUser, allowRoom, model = 1, quickModel = false, maxuser = 20, tipsword = '' }) {
+module.exports = function WechatyFaceCartonPlugin({ secretId = '', secretKey = '', allowUser = [], allowRoom = [], quickModel = false, maxuser = 20, tipsword = '' }) {
   config = {
+    maxuser,
     secretId,
     secretKey,
     allowUser,

@@ -64,9 +64,20 @@ class BotManage {
   async talk(username, content) {
     // 防止进入死循环
     if (this.userBotDict[username].stepRecord.length >= this.loopLimit) {
-      const arr = this.userBotDict[username].stepRecord.splice(-1 * this.loopLimit)
+      const arr = this.userBotDict[username].stepRecord.slice(-1 * this.loopLimit)
       console.log('ini', arr, this.userBotDict[username].stepRecord)
-      if (arr.reduce((x, y) => x * y) === this.userBotDict[username].stepRecord[-1] ** this.loopLimit) {
+      console.log(
+        'arr.reduce((x, y) => x * y) ',
+        arr.reduce((x, y) => x * y)
+      )
+      console.log(
+        'arr.reduce((x, y) => x * y) ',
+        arr.reduce((x, y) => x * y)
+      )
+      const lastIndex = this.userBotDict[username].stepRecord.length - 1
+      console.log('limit last', this.userBotDict[username].stepRecord.length, this.loopLimit)
+      console.log('limit', this.userBotDict[username].stepRecord[this.userBotDict[username].stepRecord.length - 1] ** this.loopLimit)
+      if (arr.reduce((x, y) => x * y) === this.userBotDict[username].stepRecord[this.userBotDict[username].stepRecord.length - 1] ** this.loopLimit) {
         this.userBotDict[username].step = 100
       }
     }
@@ -90,7 +101,20 @@ class BotManage {
         this.userBotDict[username] = this.addReply(username, this.replyList[0])
         return this.userBotDict[username]
       } else {
-        return {}
+        if (this.config.tipsword && content.content.includes(this.config.tipsword)) {
+          // 如果没有发图片，直接发文字，触发关键词
+          return {
+            replys: [{ type: 1, content: '想要体验人脸卡通化功能，请先发送带人脸的照片给我' }],
+            replys_index: 0,
+          }
+        } else {
+          // 如果没有发图片，直接发文字，没有触发关键词
+          this.removeBot(username)
+          return {
+            replys: [{ type: 1, content: '' }],
+            replys_index: 0,
+          }
+        }
       }
     } else if (this.userBotDict[username].step == 1) {
       console.log('第二轮对话，用户选择需要转换的模式')
@@ -157,8 +181,8 @@ class BotManage {
   }
   removeBot(dictKey) {
     console.log('bot process remove', dictKey)
-    this.userTimeDict[dictKey] = null
-    this.userBotDict[dictKey] = null
+    delete this.userTimeDict[dictKey]
+    delete this.userBotDict[dictKey]
   }
   getBotList() {
     return this.userBotDict
