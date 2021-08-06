@@ -1,4 +1,3 @@
-const { generateCarton } = require('./service/tencent')
 const { contactSay, roomSay, delay } = require('./util/index')
 const { BotManage } = require('./service/multiReply')
 const Qrterminal = require('qrcode-terminal')
@@ -17,7 +16,6 @@ async function dispatchFriendFilterByMsgType(that, msg) {
     const name = await contact.name()
     const isOfficial = contact.type() === that.Contact.Type.Official
     const id = await contact.id
-    console.log('id', id)
     switch (type) {
       case that.Message.Type.Text:
         content = msg.text()
@@ -97,9 +95,6 @@ async function dispatchRoomFilterByMsgType(that, room, msg) {
         let replyIndex = multiReply.replys_index
         await delay(1000)
         await roomSay(room, contact, replys[replyIndex])
-        // const res = await generateCarton(config, base, { model: 1 })
-        // console.log('生成成功，准备发送')
-        // await roomSay(room, contact, res)
       } else {
         console.log('没有开通此群人脸漫画化功能')
       }

@@ -39,12 +39,12 @@ class BotManage {
     this.maxuser = maxuser // 最大同时处理的用户数
     this.loopLimit = 4
     this.replyList = [
-      { type: 1, content: '请选择你要转换的模式(发送序号)：\n\n [1]、卡通化照片\n\n[2]、变换年龄\n\n[3]、变换性别\n\n' },
+      { type: 1, content: '请选择你要转换的模式(发送序号)：\n\n[1]、卡通化照片\n\n[2]、变换年龄\n\n[3]、变换性别\n\n' },
       { type: 1, content: '请输入你想要转换的年龄：请输入10~80的任意数字' },
-      { type: 1, content: '请输入你想转换的性别(发送序号)：\n\n [0]、男变女\n\n[1]、女变男\n\n' },
+      { type: 1, content: '请输入你想转换的性别(发送序号)：\n\n[0]、男变女\n\n[1]、女变男\n\n' },
       { type: 1, content: '你输入的序号有误，请输入正确的序号' },
       { type: 1, content: '你输入的年龄有误，请输入10~80的任意数字' },
-      { type: 1, content: '你选择的序号有误，请输入你想转换的性别(发送序号)：\n\n [0]、男变女\n\n[1]、女变男\n\n' },
+      { type: 1, content: '你选择的序号有误，请输入你想转换的性别(发送序号)：\n\n[0]、男变女\n\n[1]、女变男\n\n' },
     ]
   }
   async creatBot(username, content) {
