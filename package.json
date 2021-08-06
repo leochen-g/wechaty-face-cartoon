@@ -1,6 +1,6 @@
 {
   "name": "wechaty-face-carton",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "wechaty人像卡通画插件",
   "main": "src/index.js",
   "scripts": {
@@ -44,5 +44,7 @@
   },
   "peerDependencies": {
     "wechaty": "^0.63.7"
-  }
+  },
+  "_id": "wechaty-face-carton@0.0.2",
+  "_commitid": "a028a38"
 }
