@@ -1,4 +1,5 @@
 *.vscode
+index.template.js
 */.settings
 */target
 *target
