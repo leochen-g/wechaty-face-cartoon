@@ -1,4 +1,4 @@
-const tencentcloud = require('tencentcloud-sdk-nodejs')
+import tencentcloud from 'tencentcloud-sdk-nodejs'
 const FtClient = tencentcloud.ft.v20200304.Client
 let fcClient = ''
 /**
@@ -22,7 +22,7 @@ async function initFcClient(config) {
   fcClient = new FtClient(clientConfig)
 }
 
-async function generateCarton(config, img, { model = 1, age = 60, gender = 0 }) {
+export async function generateCarton(config, img, { model = 1, age = 60, gender = 0 }) {
   try {
     const params = {
       Image: img,
@@ -91,8 +91,4 @@ async function generateCarton(config, img, { model = 1, age = 60, gender = 0 }) 
     console.log('生成失败', e.code, errorMap[e.code])
     return { type: 1, content: errorMap[e.code] || '网络错误' }
   }
-}
-
-module.exports = {
-  generateCarton,
 }

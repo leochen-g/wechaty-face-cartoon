@@ -1,5 +1,5 @@
-const {WechatyBuilder} = require('wechaty')
-const WechatyFaceCartonPlugin = require('../src/index')
+import {WechatyBuilder} from 'wechaty'
+import { WechatyFaceCartonPlugin } from '../src/index.js'
 const name = 'wechat-carton'
 const bot = WechatyBuilder.build({
   name, // generate xxxx.memory-card.json and save login data for the next login

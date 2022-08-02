@@ -1,5 +1,4 @@
-const { UrlLink, MiniProgram } = require('wechaty')
-const { FileBox } = require('file-box')
+import { FileBox } from 'file-box'
 /**
  * 延时函数
  * @param {*} ms 毫秒
@@ -15,7 +14,7 @@ async function delay(ms) {
  * @param {*} isRoom
  * type 1 文字 2 图片url 3 图片base64 4 url链接 5 小程序  6 名片
  */
-async function roomSay(room, contact, msg) {
+async function roomSay(that, room, contact, msg) {
   try {
     if (msg.type === 1 && msg.content) {
       // 文字
@@ -36,7 +35,7 @@ async function roomSay(room, contact, msg) {
       await room.say(obj)
     } else if (msg.type === 4 && msg.url && msg.title && msg.description) {
       console.log('in url')
-      let url = new UrlLink({
+      let url = that.UrlLink({
         description: msg.description,
         thumbnailUrl: msg.thumbUrl,
         title: msg.title,
@@ -45,7 +44,7 @@ async function roomSay(room, contact, msg) {
       console.log(url)
       await room.say(url)
     } else if (msg.type === 5 && msg.appid && msg.title && msg.pagePath && msg.description && msg.thumbUrl && msg.thumbKey) {
-      let miniProgram = new MiniProgram({
+      let miniProgram = that.MiniProgram({
         appid: msg.appid,
         title: msg.title,
         pagePath: msg.pagePath,
@@ -67,7 +66,7 @@ async function roomSay(room, contact, msg) {
  * @param isRoom
  *  type 1 文字 2 图片url 3 图片base64 4 url链接 5 小程序  6 名片
  */
-async function contactSay(contact, msg, isRoom = false) {
+async function contactSay(that, contact, msg, isRoom = false) {
   try {
     if (msg.type === 1 && msg.content) {
       // 文字
@@ -87,7 +86,7 @@ async function contactSay(contact, msg, isRoom = false) {
       let obj = FileBox.fromDataURL(msg.url, 'user-avatar.jpg')
       await contact.say(obj)
     } else if (msg.type === 4 && msg.url && msg.title && msg.description && msg.thumbUrl) {
-      let url = new UrlLink({
+      let url = that.UrlLink({
         description: msg.description,
         thumbnailUrl: msg.thumbUrl,
         title: msg.title,
@@ -95,7 +94,7 @@ async function contactSay(contact, msg, isRoom = false) {
       })
       await contact.say(url)
     } else if (msg.type === 5 && msg.appid && msg.title && msg.pagePath && msg.description && msg.thumbUrl && msg.thumbKey) {
-      let miniProgram = new MiniProgram({
+      let miniProgram = that.MiniProgram({
         appid: msg.appid,
         title: msg.title,
         pagePath: msg.pagePath,
@@ -110,8 +109,4 @@ async function contactSay(contact, msg, isRoom = false) {
   }
 }
 
-module.exports = {
-  contactSay,
-  roomSay,
-  delay,
-}
+export { contactSay, roomSay, delay }

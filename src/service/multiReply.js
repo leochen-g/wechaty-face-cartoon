@@ -1,4 +1,4 @@
-const { generateCarton } = require('./tencent')
+import { generateCarton } from './tencent.js'
 
 class MultiReply {
   constructor() {
@@ -246,6 +246,4 @@ class BotManage {
   }
 }
 
-module.exports = {
-  BotManage,
-}
+export { BotManage }

@@ -1,6 +1,6 @@
-const { contactSay, roomSay, delay } = require('./util/index')
-const { BotManage } = require('./service/multiReply')
-const Qrterminal = require('qrcode-terminal')
+import { contactSay, roomSay, delay } from './util/index.js'
+import { BotManage } from './service/multiReply.js'
+import Qrterminal from 'qrcode-terminal'
 let config = {}
 let BotRes = ''
 
@@ -18,7 +18,7 @@ async function dispatchFriendFilterByMsgType(that, msg) {
     const id = await contact.id
     switch (type) {
       case that.Message.Type.Text:
-        content = msg.text()
+        const content = msg.text()
         if (!isOfficial) {
           console.log(`发消息人${name}:${content}`)
           if (content.trim()) {
@@ -26,7 +26,7 @@ async function dispatchFriendFilterByMsgType(that, msg) {
             let replys = multiReply.replys
             let replyIndex = multiReply.replys_index
             await delay(1000)
-            await contactSay(contact, replys[replyIndex])
+            await contactSay(that, contact, replys[replyIndex])
           }
         }
         break
@@ -39,7 +39,7 @@ async function dispatchFriendFilterByMsgType(that, msg) {
           let replys = multiReply.replys
           let replyIndex = multiReply.replys_index
           await delay(1000)
-          await contactSay(contact, replys[replyIndex])
+          await contactSay(that, contact, replys[replyIndex])
         } else {
           console.log(`没有开启 ${name} 的人脸漫画化功能, 或者检查是否已经配置此人微信昵称`)
         }
@@ -68,7 +68,7 @@ async function dispatchRoomFilterByMsgType(that, room, msg) {
   const id = await contact.id
   switch (type) {
     case that.Message.Type.Text:
-      content = msg.text()
+      let content = msg.text()
       console.log(`群名: ${roomName} 发消息人: ${contactName} 内容: ${content}`)
       if (config.allowRoom.includes(roomName)) {
         const mentionSelf = content.includes(`@${userSelfName}`)
@@ -79,7 +79,7 @@ async function dispatchRoomFilterByMsgType(that, room, msg) {
             let replys = multiReply.replys
             let replyIndex = multiReply.replys_index
             await delay(1000)
-            await roomSay(room, contact, replys[replyIndex])
+            await roomSay(that.room, contact, replys[replyIndex])
           }
         }
       }
@@ -94,7 +94,7 @@ async function dispatchRoomFilterByMsgType(that, room, msg) {
         let replys = multiReply.replys
         let replyIndex = multiReply.replys_index
         await delay(1000)
-        await roomSay(room, contact, replys[replyIndex])
+        await roomSay(that, room, contact, replys[replyIndex])
       } else {
         console.log('没有开通此群人脸漫画化功能')
       }
@@ -145,7 +145,7 @@ async function onScan(qrcode, status) {
   console.log(qrImgUrl)
 }
 
-module.exports = function WechatyFaceCartonPlugin({ secretId = '', secretKey = '', allowUser = [], allowRoom = [], quickModel = false, maxuser = 20, tipsword = '' }) {
+export function WechatyFaceCartonPlugin({ secretId = '', secretKey = '', allowUser = [], allowRoom = [], quickModel = false, maxuser = 20, tipsword = '' }) {
   config = {
     maxuser,
     secretId,

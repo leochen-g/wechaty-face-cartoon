@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "wechaty人像卡通画插件",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start:test": "node test/index.js",
     "test": "nodemon test/index.js",
