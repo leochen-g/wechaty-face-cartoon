@@ -79,7 +79,7 @@ async function dispatchRoomFilterByMsgType(that, room, msg) {
             let replys = multiReply.replys
             let replyIndex = multiReply.replys_index
             await delay(1000)
-            await roomSay(that.room, contact, replys[replyIndex])
+            await roomSay(that, room, contact, replys[replyIndex])
           }
         }
       }
