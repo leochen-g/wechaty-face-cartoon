@@ -1,5 +1,5 @@
-const { FileBox, UrlLink, MiniProgram } = require('wechaty')
-
+const { UrlLink, MiniProgram } = require('wechaty')
+const { FileBox } = require('file-box')
 /**
  * 延时函数
  * @param {*} ms 毫秒
