@@ -2,9 +2,18 @@
   "name": "wechaty-face-carton",
   "version": "0.0.3",
   "description": "wechaty人像卡通画插件",
-  "main": "src/index.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/src/index.js",
+      "require": "./dist/cjs/src/index.js"
+    }
+  },
   "scripts": {
+    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "clean": "shx rm -fr dist/*",
+    "dist": "npm-run-all clean build dist:commonjs",
+    "dist:commonjs": "jq -n \"{ type: \\\"commonjs\\\" }\" > dist/cjs/package.json",
     "start:test": "node test/index.js",
     "test": "nodemon test/index.js",
     "release": "verpub publish",
@@ -30,6 +39,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@chatie/tsconfig": "^4.6.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
@@ -43,6 +53,10 @@
     "qrcode-terminal": "^0.12.0",
     "tencentcloud-sdk-nodejs": "^4.0.396"
   },
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "_id": "wechaty-face-carton@0.0.3",
   "_commitid": "12c51ec"
 }
