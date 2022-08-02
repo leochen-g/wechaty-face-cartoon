@@ -1,5 +1,5 @@
-import * as tencentcloud from 'tencentcloud-sdk-nodejs'
-const FtClient = tencentcloud.ft.v20200304.Client
+import { ft } from 'tencentcloud-sdk-nodejs'
+const FtClient = ft.v20200304.Client
 let fcClient = ''
 /**
  * 实例化
