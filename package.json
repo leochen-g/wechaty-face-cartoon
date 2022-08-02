@@ -57,6 +57,10 @@
     "dist/",
     "src/"
   ],
+  "publishConfig": {
+    "registry": " https://registry.npmjs.org/",
+    "tag": "latest"
+  },
   "_id": "wechaty-face-carton@0.0.4",
   "_commitid": "84e52b6"
 }
