@@ -1,6 +1,6 @@
 {
   "name": "wechaty-face-carton",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "wechaty人像卡通画插件",
   "type": "module",
   "exports": {
@@ -61,6 +61,6 @@
     "registry": " https://registry.npmjs.org/",
     "tag": "latest"
   },
-  "_id": "wechaty-face-carton@0.0.4",
-  "_commitid": "84e52b6"
+  "_id": "wechaty-face-carton@0.0.5",
+  "_commitid": "c047f9e"
 }
