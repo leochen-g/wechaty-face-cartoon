@@ -1,6 +1,6 @@
 {
   "name": "wechaty-face-carton",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "wechaty人像卡通画插件",
   "main": "src/index.js",
   "type": "module",
