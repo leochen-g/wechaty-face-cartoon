@@ -1,4 +1,4 @@
-import tencentcloud from 'tencentcloud-sdk-nodejs'
+import * as tencentcloud from 'tencentcloud-sdk-nodejs'
 const FtClient = tencentcloud.ft.v20200304.Client
 let fcClient = ''
 /**
