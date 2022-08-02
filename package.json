@@ -1,6 +1,6 @@
 {
   "name": "wechaty-face-carton",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "wechaty人像卡通画插件",
   "type": "module",
   "exports": {
@@ -57,6 +57,6 @@
     "dist/",
     "src/"
   ],
-  "_id": "wechaty-face-carton@0.0.3",
-  "_commitid": "12c51ec"
+  "_id": "wechaty-face-carton@0.0.4",
+  "_commitid": "84e52b6"
 }
